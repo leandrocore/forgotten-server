@@ -30,6 +30,7 @@
 #include "rsa.h"
 #include "protocolold.h"
 #include "protocollogin.h"
+#include "protocolspectator.h"
 #include "protocolstatus.h"
 #include "databasemanager.h"
 #include "scheduler.h"
@@ -189,6 +190,14 @@ void mainLoader(int, char*[], ServiceManager* services)
 		std::cout << "> No tables were optimized." << std::endl;
 	}
 
+	// clear live casts
+	if (g_config.getBoolean(ConfigManager::LIVE_CAST_ENABLED)) {
+		std::cout << ">> Clearing live casts" << std::endl;
+		std::ostringstream query;
+		query << "DELETE FROM `live_casts`;";
+		Database::getInstance().executeQuery(query.str());
+	}
+
 	//load vocations
 	std::cout << ">> Loading vocations" << std::endl;
 	if (!g_vocations.loadFromXml()) {
@@ -268,6 +277,9 @@ void mainLoader(int, char*[], ServiceManager* services)
 
 	// Legacy login protocol
 	services->add<ProtocolOld>(static_cast<uint16_t>(g_config.getNumber(ConfigManager::LOGIN_PORT)));
+
+	// Spectator protocol
+	services->add<ProtocolSpectator>(static_cast<uint16_t>(g_config.getNumber(ConfigManager::LIVE_CAST_PORT)));
 
 	RentPeriod_t rentPeriod;
 	std::string strRentPeriod = asLowerCaseString(g_config.getString(ConfigManager::HOUSE_RENT_PERIOD));
