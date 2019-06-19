@@ -1205,7 +1205,13 @@ void ProtocolSpectator::sendBasicData()
 		msg.add<uint32_t>(0);
 	}
 	msg.addByte(player->getVocation()->getClientId());
-	msg.addByte(1); // has reached Main (allow player to open Prey window)
+	// Prey window
+	if (player->getVocation()->getId() == 0) {
+		msg.addByte(0);
+	}
+	else {
+		msg.addByte(1); // has reached Main (allow player to open Prey window)
+	}
 	msg.add<uint16_t>(0xFF); // number of known spells
 	for (uint8_t spellId = 0x00; spellId < 0xFF; spellId++) {
 		msg.addByte(spellId);
