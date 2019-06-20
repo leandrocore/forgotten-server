@@ -1608,7 +1608,6 @@ void LuaScriptInterface::registerFunctions()
 	registerEnum(TALKTYPE_PRIVATE_TO)
 	registerEnum(TALKTYPE_CHANNEL_Y)
 	registerEnum(TALKTYPE_CHANNEL_O)
-	registerEnum(TALKTYPE_SPELL)
 	registerEnum(TALKTYPE_PRIVATE_NP)
 	registerEnum(TALKTYPE_PRIVATE_PN)
 	registerEnum(TALKTYPE_BROADCAST)
@@ -1840,8 +1839,6 @@ void LuaScriptInterface::registerFunctions()
 
 	registerEnum(SPELL_INSTANT)
 	registerEnum(SPELL_RUNE)
-
-	registerEnum(CHANNEL_CAST)
 
 	// _G
 	registerGlobalVariable("INDEX_WHEREEVER", INDEX_WHEREEVER);
@@ -2240,10 +2237,6 @@ void LuaScriptInterface::registerFunctions()
 	registerMetaMethod("Player", "__eq", LuaScriptInterface::luaUserdataCompare);
 
 	registerMethod("Player", "isPlayer", LuaScriptInterface::luaPlayerIsPlayer);
-
-	registerMethod("Player", "isLiveCasting", LuaScriptInterface::luaPlayerIsLiveCasting);
-	registerMethod("Player", "startLiveCasting", LuaScriptInterface::luaPlayerStartLiveCasting);
-	registerMethod("Player", "stopLiveCasting", LuaScriptInterface::luaPlayerStopLiveCasting);
 
 	registerMethod("Player", "getGuid", LuaScriptInterface::luaPlayerGetGuid);
 	registerMethod("Player", "getIp", LuaScriptInterface::luaPlayerGetIp);
@@ -7884,33 +7877,6 @@ int LuaScriptInterface::luaPlayerIsPlayer(lua_State* L)
 {
 	// player:isPlayer()
 	pushBoolean(L, getUserdata<const Player>(L, 1) != nullptr);
-	return 1;
-}
-
-int LuaScriptInterface::luaPlayerIsLiveCasting(lua_State* L)
-{
-	// player:isLiveCasting()
-	Player* player = getUserdata<Player>(L, 1);
-	pushBoolean(L, player->isLiveCasting());
-	return 1;
-}
-
-int LuaScriptInterface::luaPlayerStartLiveCasting(lua_State* L)
-{
-	// player:startLiveCasting(password)
-	Player* player = getUserdata<Player>(L, 1);
-	std::string password = getString(L, 2);
-	player->startLiveCasting(password);
-	pushBoolean(L, player->isLiveCasting());
-	return 1;
-}
-
-int LuaScriptInterface::luaPlayerStopLiveCasting(lua_State* L)
-{
-	// player:stopLiveCasting()
-	Player* player = getUserdata<Player>(L, 1);
-	player->stopLiveCasting();
-	pushBoolean(L, player->isLiveCasting() == false);
 	return 1;
 }
 

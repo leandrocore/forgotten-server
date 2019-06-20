@@ -53,7 +53,7 @@ struct TextMessage
 	TextMessage(MessageClasses type, std::string text) : type(type), text(std::move(text)) {}
 };
 
-class ProtocolGame : public Protocol
+class ProtocolGame final : public Protocol
 {
 	public:
 		// static protocol information
@@ -79,9 +79,9 @@ class ProtocolGame : public Protocol
 		}
 		void connect(uint32_t playerId, OperatingSystem_t operatingSystem);
 		void disconnectClient(const std::string& message) const;
-		void writeToOutputBuffer(const NetworkMessage& msg, bool broadcast = true);
+		void writeToOutputBuffer(const NetworkMessage& msg);
 
-		void release();
+		void release() override;
 
 		void checkCreatureAsKnown(uint32_t id, bool& known, uint32_t& removedKnown);
 
@@ -90,14 +90,13 @@ class ProtocolGame : public Protocol
 		bool canSee(const Position& pos) const;
 
 		// we have all the parse methods
-		void parsePacket(NetworkMessage& msg);
-		void onRecvFirstMessage(NetworkMessage& msg);
-		void onConnect();
+		void parsePacket(NetworkMessage& msg) override;
+		void onRecvFirstMessage(NetworkMessage& msg) override;
+		void onConnect() override;
 
 		//Parse methods
 		void parseAutoWalk(NetworkMessage& msg);
 		void parseSetOutfit(NetworkMessage& msg);
-		void parseExecuteCommand(const std::string& text);
 		void parseSay(NetworkMessage& msg);
 		void parseLookAt(NetworkMessage& msg);
 		void parseLookInBattleList(NetworkMessage& msg);
@@ -165,7 +164,7 @@ class ProtocolGame : public Protocol
 		void parseCloseChannel(NetworkMessage& msg);
 
 		//Send functions
-		void sendChannelMessage(const std::string& author, const std::string& text, SpeakClasses type, uint16_t channel, bool broadcast = true);
+		void sendChannelMessage(const std::string& author, const std::string& text, SpeakClasses type, uint16_t channel);
 		void sendChannelEvent(uint16_t channelId, const std::string& playerName, ChannelEvent_t channelEvent);
 		void sendClosePrivate(uint16_t channelId);
 		void sendCreatePrivateChannel(uint16_t channelId, const std::string& channelName);
@@ -303,7 +302,6 @@ class ProtocolGame : public Protocol
 		void parseExtendedOpcode(NetworkMessage& msg);
 
 		friend class Player;
-		friend class ProtocolSpectator;
 
 		// Helpers so we don't need to bind every time
 		template <typename Callable, typename... Args>

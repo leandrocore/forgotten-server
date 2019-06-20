@@ -340,15 +340,6 @@ CREATE TABLE IF NOT EXISTS `towns` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET=utf8;
 
-CREATE TABLE IF NOT EXISTS `live_casts` (
-  `player_id` int(11) NOT NULL,
-  `name` varchar(32) NOT NULL,
-  `password` varchar(30) NOT NULL DEFAULT '',
-  `spectators` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`player_id`),
-  UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB;
-
 DROP TRIGGER IF EXISTS `ondelete_players`;
 DROP TRIGGER IF EXISTS `oncreate_guilds`;
 
