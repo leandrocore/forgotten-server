@@ -67,7 +67,6 @@ void ProtocolLogin::getCharacterList(const std::string& accountName, const std::
 	}
 
 	//Update premium days
-	output->addByte(1);
 	Game::updatePremium(account);
 
 	const std::string& motd = g_config.getString(ConfigManager::MOTD);
