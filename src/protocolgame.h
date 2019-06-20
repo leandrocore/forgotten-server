@@ -325,8 +325,6 @@ class ProtocolGame : public Protocol
 
 		uint8_t challengeRandom = 0;
 
-		bool loggedIn = false;
-
 		bool debugAssertSent = false;
 		bool acceptPackets = false;
 };

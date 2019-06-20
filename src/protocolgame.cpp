@@ -2622,7 +2622,6 @@ void ProtocolGame::sendAddCreature(const Creature* creature, const Position& pos
 	sendPendingStateEntered();
 	sendEnterWorld();
 	sendMapDescription(pos);
-	loggedIn = true;
 
 	if (isLogin) {
 		sendMagicEffect(pos, CONST_ME_TELEPORT);
