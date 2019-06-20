@@ -58,7 +58,7 @@ void ProtocolSpectator::release()
 	Protocol::release();
 }
 
-void ProtocolSpectator::login(const std::string& name, uint32_t accountId, OperatingSystem_t operatingSystem)
+void ProtocolSpectator::login(const std::string& name, OperatingSystem_t operatingSystem)
 {
 	//dispatcher thread
 	Player* foundPlayer = g_game.getPlayerByName(name);
@@ -155,7 +155,7 @@ void ProtocolSpectator::connect(uint32_t playerId, OperatingSystem_t operatingSy
 	syncOpenContainers();
 }
 
-void ProtocolSpectator::logout(bool displayEffect, bool forced)
+void ProtocolSpectator::logout()
 {
 	player->removeSpectator(this);
 	disconnect();
@@ -293,7 +293,7 @@ void ProtocolSpectator::disconnectClient(const std::string& message) const
 	disconnect();
 }
 
-void ProtocolSpectator::writeToOutputBuffer(const NetworkMessage& msg, bool broadcast/* = false*/) {
+void ProtocolSpectator::writeToOutputBuffer(const NetworkMessage& msg) {
 	auto out = getOutputBuffer(msg.getLength());
 	out->append(msg);
 }
