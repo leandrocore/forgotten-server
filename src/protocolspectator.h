@@ -48,8 +48,8 @@ class ProtocolSpectator final : public ProtocolGame
 
 		explicit ProtocolSpectator(Connection_ptr connection) : ProtocolGame(connection) {}
 
-		void login(const std::string& name, OperatingSystem_t operatingSystem);
-		void logout();
+		void login(const std::string& name, uint32_t accnumber, OperatingSystem_t operatingSystem);
+		void logout(bool displayEffect = false, bool forced = false);
 
 		uint16_t getVersion() const {
 			return version;
@@ -62,7 +62,7 @@ class ProtocolSpectator final : public ProtocolGame
 		void syncOpenContainers();
 		void connect(uint32_t playerId, OperatingSystem_t operatingSystem);
 		void disconnectClient(const std::string& message) const;
-		void writeToOutputBuffer(const NetworkMessage& msg);
+		void writeToOutputBuffer(const NetworkMessage& msg, bool broadcast = false);
 
 		void release() final;
 
