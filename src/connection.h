@@ -126,13 +126,13 @@ class Connection : public std::enable_shared_from_this<Connection>
 
 		boost::asio::ip::tcp::socket socket;
 
-		connectionState = CONNECTION_STATE_PENDING;
+		bool connectionState = CONNECTION_STATE_PENDING;
 		time_t timeConnected;
 		uint32_t packetsSent = 0;
-		receivedFirst = false;
-		serverNameTime = 0;
-		receivedName = false;
-		receivedLastChar = false;
+		bool receivedFirst = false;
+		uint32_t serverNameTime = 0;
+		bool receivedName = false;
+		bool receivedLastChar = false;
 };
 
 #endif
