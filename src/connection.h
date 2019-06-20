@@ -66,9 +66,12 @@ class Connection : public std::enable_shared_from_this<Connection>
 		Connection(const Connection&) = delete;
 		Connection& operator=(const Connection&) = delete;
 
-		enum ConnectionState_t {
-			CONNECTION_STATE_OPEN,
-			CONNECTION_STATE_CLOSED,
+		enum ConnectionState_t : int8_t {
+			CONNECTION_STATE_DISCONNECTED,
+			CONNECTION_STATE_CONNECTING_STAGE1,
+			CONNECTION_STATE_CONNECTING_STAGE2,
+			CONNECTION_STATE_GAME,
+			CONNECTION_STATE_PENDING
 		};
 
 		enum { FORCE_CLOSE = true };
@@ -123,11 +126,13 @@ class Connection : public std::enable_shared_from_this<Connection>
 
 		boost::asio::ip::tcp::socket socket;
 
+		connectionState = CONNECTION_STATE_PENDING;
 		time_t timeConnected;
 		uint32_t packetsSent = 0;
-
-		bool connectionState = CONNECTION_STATE_OPEN;
-		bool receivedFirst = false;
+		receivedFirst = false;
+		serverNameTime = 0;
+		receivedName = false;
+		receivedLastChar = false;
 };
 
 #endif

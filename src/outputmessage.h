@@ -44,8 +44,10 @@ class OutputMessage : public NetworkMessage
 		}
 
 		void addCryptoHeader(bool addChecksum) {
-			if (addChecksum) {
+			if (addChecksum == 1) {
 				add_header(adlerChecksum(buffer + outputBufferStart, info.length));
+			} else if (addChecksum == 2) {
+				add_header(sequence++);
 			}
 
 			writeMessageLength();
@@ -66,6 +68,7 @@ class OutputMessage : public NetworkMessage
 		}
 
 	private:
+		uint32_t sequence = 0;
 		template <typename T>
 		void add_header(T add) {
 			assert(outputBufferStart >= sizeof(T));
