@@ -1,3 +1,18 @@
 
 vc14/.vs/theforgottenserver/v14/.suo
 vc14/theforgottenserver.VC.db
+pugixml.dll
+theforgottenserver-x64.exe
+zlib1.dll
+zstd.dll
+lzma.dll
+lua51.dll
+libmariadb.dll
+boost_iostreams.dll
+bz2.dll
+boost_date_time-vc141-mt-x64-1_69.dll
+boost_filesystem-vc141-mt-x64-1_69.dll
+config.lua
+vc14/.vs/theforgottenserver/v16/Browse.VC.db
+vc14/.vs/theforgottenserver/v16/.suo
+vc14/theforgottenserver.vcxproj.user

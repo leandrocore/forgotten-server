@@ -63,9 +63,10 @@ maxMarketOffersAtATimePerPlayer = 100
 mysqlHost = "127.0.0.1"
 mysqlUser = "root"
 mysqlPass = ""
-mysqlDatabase = "otxglobal"
+mysqlDatabase = ""
 mysqlPort = 3306
 mysqlSock = ""
+passwordType = "sha1"
 
 -- Misc.
 -- NOTE: classicAttackSpeed set to true makes players constantly attack at regular
@@ -108,5 +109,5 @@ startupDatabaseOptimization = false
 -- Status server information
 ownerName = ""
 ownerEmail = ""
-url = "https://otland.net/"
-location = "Sweden"
+url = "https://github.com/marcomoa/forgotten-server"
+location = "South America"
