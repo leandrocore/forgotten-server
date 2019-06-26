@@ -1,3 +1,11 @@
+--Customs
+dofile('data/lib/core/storages.lua')
+dofile('data/lib/core/functions.lua')
+dofile('data/lib/core/itemDestinations.lua')
+dofile('data/lib/core/special.lua')
+
+--Natives
+dofile('data/lib/core/achievements.lua')
 dofile('data/lib/core/combat.lua')
 dofile('data/lib/core/constants.lua')
 dofile('data/lib/core/container.lua')

@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <globalevents>
+	<!-- Bosses -->
+	<globalevent name="grayIslandBosses" type="startup" script="bosses/grayIslandBosses.lua"/>
+	<globalevent name="Mawhawk" interval="14399999" script="bosses/Mawhawk.lua"/>
+	<globalevent name="bosspoi" interval="46800000" script="bosses/bosspoi.lua"/>
+	<globalevent name="Mad" interval="14400000" script="bosses/Mad.lua"/>
+
+	<!-- Demon Oak -->
+	<globalevent name="DemonOakVoices" interval="15000" script="quests/demon oak/voices.lua" />
+
+	<!-- Ferumbras Ascendant -->
+	<globalevent name="Effect" interval="3000" script="quests/ferumbras ascedant/effect.lua"/>
+	<globalevent name="Effcts" interval="4000" script="quests/ferumbras ascedant//effects.lua"/>
+
+	<!-- World Changes -->
+	<globalevent type="startup" name="rashid" script="worldchanges/rashid.lua"/>
+	<globalevent type="startup" name="yasir" script="worldchanges/yasir.lua"/>
+	<globalevent type="startup" name="FuryGates" script="worldchanges/furyGates.lua" />
+	<globalevent type="startup" name="TheirMastersVoice" script="worldchanges/their masters voice.lua" />
+
 	<!-- Others -->
+	<globalevent type="startup" name="doCheckHouses" script="others/CheckHouses.lua" />
+	<globalevent name="checkInbox" interval="30000" script="others/checkInbox.lua"/>
+	<globalevent name="RentedMounts" interval="15000" script="others/checkMount.lua" />
 	<globalevent type="startup" name="ServerStartup" script="others/startup.lua" />
+	<globalevent name="SpawnRaid" interval="60000" script="others/raids.lua"/>
 	<globalevent type="record" name="PlayerRecord" script="others/record.lua" />
 	<globalevent name="Server Save" time="09:55:00" script="others/serversave.lua" />
+	<globalevent name="npcs" type="startup" script="others/npcspawn.lua"/>
+	<!-- Grimvale -->
+	<globalevent name="Grimvale" interval="60000" script="others/grimvale.lua" />
+	<globalevent name="Respawn" type="startup" script="others/grimvaleRespawn.lua" />
+	<!-- Blooming Griffinclaw -->
+	<globalevent name="GriffinclawFlower" type="startup" script="others/griffinclawFlower.lua" />
 </globalevents>

@@ -22,7 +22,7 @@
 
 static constexpr auto STATUS_SERVER_NAME = "The Forgotten Server";
 static constexpr auto STATUS_SERVER_VERSION = "1.3";
-static constexpr auto STATUS_SERVER_DEVELOPERS = "Mark Samman";
+static constexpr auto STATUS_SERVER_DEVELOPERS = "Marco Oliveira and Érick Nunes";
 
 static constexpr auto CLIENT_VERSION_MIN = 1100;
 static constexpr auto CLIENT_VERSION_MAX = 1100;
