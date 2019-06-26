@@ -2930,8 +2930,7 @@ void ProtocolGame::sendVIPEntries()
 			continue;
 		}
 
-		VipStatus_t vipStatus = VIPSTATUS_ONLINE
-
+		VipStatus_t vipStatus = VIPSTATUS_ONLINE;
 		if (!vipPlayer || vipPlayer->isInGhostMode() || player->isAccessPlayer()) {
 			vipStatus = VIPSTATUS_OFFLINE;
 		}
