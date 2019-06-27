@@ -5,6 +5,11 @@
 	<globalevent name="Mawhawk" interval="14399999" script="bosses/Mawhawk.lua"/>
 	<globalevent name="bosspoi" interval="46800000" script="bosses/bosspoi.lua"/>
 	<globalevent name="Mad" interval="14400000" script="bosses/Mad.lua"/>
+	<globalevent name="Canon Dominus" interval="900000" script="bosses/Grand Canon Dominus.lua" />
+	<globalevent name="Chaplaingaunder" interval="900000" script="bosses/Grand Chaplain Gaunder.lua" />
+	<globalevent name="Preceptor Lazare" interval="900000" script="bosses/Preceptor Lazare.lua" />
+	<globalevent name="Grand Commander" interval="900000" script="bosses/Grand Commander Soeren.lua" />
+	<globalevent name="Thawing Dragon Lord" interval="900000" script="bosses/Thawing Dragon Lord.lua" />
 
 	<!-- Demon Oak -->
 	<globalevent name="DemonOakVoices" interval="15000" script="quests/demon oak/voices.lua" />
